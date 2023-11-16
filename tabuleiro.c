@@ -77,4 +77,17 @@ void iniciarpecas(struct node **headbranco, struct node **headpreto){
 }
 
 
-
+int vitoria(struct node *preto, struct node *branco){
+    struct vitoria vitoria;
+    if(preto == NULL){
+        vitoria.jogo = TRUE;
+        vitoria.vencedor = 'B';
+    }else if(branco == NULL){
+        vitoria.jogo = TRUE;
+        vitoria.vencedor = 'P';
+    }else{
+        vitoria.jogo = FALSE;
+        vitoria.vencedor = 'N';
+    }
+    return(vitoria);
+}

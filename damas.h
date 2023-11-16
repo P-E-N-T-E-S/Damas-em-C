@@ -13,7 +13,13 @@ struct node{
   struct node *next;
 }
 
+struct vitoria{
+  int jogo;
+  char vencedor;
+}
+
 void Tabuleiro(struct node **head)
 void iniciarpecas(struct node **headbranco, struct node **headpreto)
+int vitoria(struct node *preto, struct node *branco)
 
 #endif
