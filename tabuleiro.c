@@ -30,14 +30,50 @@ void Tabuleiro(struct node **head){
 }
 
 
+void addnode(struct node **head, int Y, int X, char time){
+    struct node *novo = (struct node *)malloc(sizeof(struct node));
+    struct node *n = *head;
 
-void iniciarpecas(struct node **head){
-    struct peca branco[12], preto[12];
+    novo->peca.time = time;
+    novo->peca.X = X;
+    novo->peca.Y = Y;
+    novo->next = NULL;
 
-    for(linha=0;linha<8;linha++){
-        for(coluna)
+    if(head == NULL){
+        *head = novo;
+    }else{
+        while(n->next != NULL){
+            n = n->next
+        }
+        n->next = novo;
     }
+}
 
+
+void iniciarpecas(struct node **headbranco, struct node **headpreto){
+    int validacao = TRUE;
+    int linha, coluna;
+
+    
+    for(linha=0;linha<8;linha++){
+        for(coluna=0;coluna<8;coluna++){
+            if(linha<4){
+                if(validacao){
+                    addnode(&headpreto, linha, coluna, 'P');
+                    validacao = FALSE;
+                }else{
+                    validacao = TRUE
+                }                    
+            }else if(linha >= 6){
+                if(validacao){
+                    addnode(&headbranco, linha, coluna, 'B');
+                    validacao = FALSE
+                }else{
+                    validacao = True
+                }
+            }
+        }
+    }
 }
 
 

@@ -1,4 +1,5 @@
-#ifdef __FUNCTION__
+#ifdef __DAMAS_H__
+#define __DAMAS_H__
 
 struct peca{
   char time;
@@ -13,5 +14,6 @@ struct node{
 }
 
 void Tabuleiro(struct node **head)
+void iniciarpecas(struct node **headbranco, struct node **headpreto)
 
 #endif
