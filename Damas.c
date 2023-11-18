@@ -20,7 +20,7 @@ int main(void){
   
   fptr = fopen("jogos.dat", "wb+");
 
-  opcao = menu()
+  opcao = Menu()
 
   switch (opcao)
   {

@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "damas.h"
+
 int Menu() {
   int opcao;
 
