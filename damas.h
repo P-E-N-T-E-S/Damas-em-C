@@ -18,6 +18,14 @@ struct vitoria{
   char vencedor;
 }
 
+struct jogadas
+{
+  struct peca posicaoAntiga;
+  struct peca posicaoNova;
+  struct peca pecaComida;
+  struct jogadas *next;
+}
+
 void Tabuleiro(struct node **head)
 void iniciarpecas(struct node **headbranco, struct node **headpreto)
 int vitoria(struct node *preto, struct node *branco)

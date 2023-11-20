@@ -11,7 +11,8 @@
 /*jogada do branco: jogada=TRUE
 jogada do preto: jogada=FALSE*/
 
-int main(void){
+int main(void)
+{
   int opcao, jogada = TRUE;
   struct node *headpreto = (struct node *)malloc(sizeof(struct node));
   struct node *headbranco = (struct node *)malloc(sizeof(struct node));
@@ -50,3 +51,18 @@ int main(void){
 
 
 
+int Menu() {
+  int opcao;
+
+  printf("====================================\n");
+  printf("| O que você deseja fazer:         |\n");
+  printf("| (1)Iniciar jogo                  |\n");
+  printf("| (2)Regras                        |\n");
+  printf("| (3)Verificar histórico           |\n");
+  printf("| (4)Sair                          |\n");
+  printf("====================================\n");
+  printf("Opção: ");
+  scanf("%d", &opcao);
+
+  return opcao;
+}
