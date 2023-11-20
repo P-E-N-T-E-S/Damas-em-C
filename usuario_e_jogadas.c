@@ -40,6 +40,22 @@ int validacaopecalonge(int X, int Y, int Xdest, int Ydest){ //valida se não est
 }
 
 
+comerpeca(struct node **head, int X, int Y){
+    struct node *n = *head;
+    struct node *temp;
+    while(n->next->next != NULL && (n->next->peca.X == X && n->next->peca.Y == Y)){
+        n = n->next;
+    }
+    if(n->next->next == NULL){
+        return
+    }else{
+        temp = n->next;
+        n->next = n->next->next;
+        free(temp);
+    }
+}
+
+
 void user_jogada(struct node **headjogada, struct node **headcontra){
     int X, Y, Xdest, Ydest;
     int val1, val2, val3;

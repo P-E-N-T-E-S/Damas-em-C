@@ -21,5 +21,6 @@ struct vitoria{
 void Tabuleiro(struct node **head)
 void iniciarpecas(struct node **headbranco, struct node **headpreto)
 int vitoria(struct node *preto, struct node *branco)
+void user_jogada(struct node **headjogada, struct node **headcontra)
 int Menu()
 #endif
