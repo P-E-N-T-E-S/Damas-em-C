@@ -7,35 +7,7 @@
 #define FALSE 0
 
 
-void user_jogada(struct node **headjogada, struct node **headcontra){
-    int X, Y, Xdest, Ydest;
-    while(1){
-        printf("insira a posição da peça que deseja mover:\nX: ");
-        scanf("%d", &X);
-        printf("Y: ");
-        scanf("%d", &Y);
-
-        while(njoga != NULL && (njoga->peca.X != X && njoga->peca.Y != Y)){
-            njoga = njoga->next;
-        }
-        if(njoga == NULL){
-            printf("Não existe peça nessa posição");
-        }else{
-            break;
-        }
-    }
-    while(1){
-        printf("insira o destino da peça:\nX:");
-        scanf("%d", &Xdest);
-        printf("Y: ");
-        scanf("%d", &Ydest);
-        val1 = validacaopecajog();
-        val2 = validacaopecacontra();
-        val3 = validacaopecalonge();
-    }
-}
-
-int validacaopecajog(struct node **head, int X, int Y){ //validar se ele não está movendo para uma peça ja existente dele
+int validacaopecajogo(struct node **head, int X, int Y){ //validar se ele não está movendo para uma peça ja existente dele
     struct node *n = *head
     while(n != NULL && (n->peca.X != X || n->peca.Y != Y)){
         n = n->next;
@@ -66,3 +38,59 @@ int validacaopecalonge(int X, int Y, int Xdest, int Ydest){ //valida se não est
         return(FALSE);
     }
 }
+
+
+void user_jogada(struct node **headjogada, struct node **headcontra){
+    int X, Y, Xdest, Ydest;
+    int val1, val2, val3;
+    char resposta;
+    while(1){
+        printf("insira a posição da peça que deseja mover:\nX: ");
+        scanf("%d", &X);
+        printf("Y: ");
+        scanf("%d", &Y);
+
+        while(njoga != NULL && (njoga->peca.X != X && njoga->peca.Y != Y)){
+            njoga = njoga->next;
+        }
+        if(njoga == NULL){
+            printf("Não existe peça nessa posição");
+        }else{
+            break;
+        }
+    }
+    while(1){
+        val1 = 1;
+        val2 = 1;
+        val3 = 3;
+        printf("insira o destino da peça:\nX:");
+        scanf("%d", &Xdest);
+        printf("Y: ");
+        scanf("%d", &Ydest);
+        val1 = validacaopecajogo(&headjogada, Xdest, Ydest);
+        val2 = validacaopecacontra(&headcontra, Xdest, Ydest);
+        val3 = validacaopecalonge(X, Y, Xdest, Ydest);
+        if(val1 && val3){
+            printf("jogada inválida\n");
+        }else if(val2){
+            printf("voce deseja comer a peça na posição X=%d, Y=%d\nY ou N: ", Xdest, Ydest);
+            scanf("%c", &resposta);
+            if(resposta == 'Y'){
+                comerpeca(&headcontra, Xdest, Ydest);
+                if(Xdest == X-1){
+                    Ydest = Ydest+1;
+                    Xdest = Xdest-1;
+                }else if(Xdest == X+1){
+                    Ydest = Ydest+1;
+                    Xdest = Xdest+1;                  
+                }
+                break;
+            }
+        }else{
+            break;
+        }
+    }
+    n->peca.X = Xdest;
+    n->peca.Y = Ydest;
+}
+
