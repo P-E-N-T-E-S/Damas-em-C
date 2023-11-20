@@ -40,6 +40,17 @@ int validacaopecalonge(int X, int Y, int Xdest, int Ydest){ //valida se não est
 }
 
 
+validacaopecaoor(int X, int Y){
+    if(X > 8 && X < 0){
+        return FALSE;
+    }else if(Y > 8 && Y < 0){
+        return FALSE;
+    }else{
+        return TRUE;
+    }
+}
+
+
 comerpeca(struct node **head, int X, int Y){
     struct node *n = *head;
     struct node *temp;
@@ -58,7 +69,7 @@ comerpeca(struct node **head, int X, int Y){
 
 void user_jogada(struct node **headjogada, struct node **headcontra){
     int X, Y, Xdest, Ydest;
-    int val1, val2, val3;
+    int val1, val2, val3, val4;
     char resposta;
     while(1){
         printf("insira a posição da peça que deseja mover:\nX: ");
@@ -76,9 +87,10 @@ void user_jogada(struct node **headjogada, struct node **headcontra){
         }
     }
     while(1){
-        val1 = 1;
-        val2 = 1;
-        val3 = 3;
+        val1 = TRUE;
+        val2 = TRUE;
+        val3 = TRUE;
+        val4 = TRUE;
         printf("insira o destino da peça:\nX:");
         scanf("%d", &Xdest);
         printf("Y: ");
@@ -86,7 +98,8 @@ void user_jogada(struct node **headjogada, struct node **headcontra){
         val1 = validacaopecajogo(&headjogada, Xdest, Ydest);
         val2 = validacaopecacontra(&headcontra, Xdest, Ydest);
         val3 = validacaopecalonge(X, Y, Xdest, Ydest);
-        if(val1 && val3){
+        val4 = validacaopecaoor(Xdest, Ydest);
+        if(val1 && val3 && val4){
             printf("jogada inválida\n");
         }else if(val2){
             printf("voce deseja comer a peça na posição X=%d, Y=%d\nY ou N: ", Xdest, Ydest);
