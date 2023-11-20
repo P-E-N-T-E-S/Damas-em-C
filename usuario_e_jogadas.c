@@ -35,14 +35,34 @@ void user_jogada(struct node **headjogada, struct node **headcontra){
     }
 }
 
-int validacaopecajog(){ //validar se ele não está movendo para uma peça ja existente dele
-
+int validacaopecajog(struct node **head, int X, int Y){ //validar se ele não está movendo para uma peça ja existente dele
+    struct node *n = *head
+    while(n != NULL && (n->peca.X != X || n->peca.Y != Y)){
+        n = n->next;
+    }
+    if(n->peca.X == X && n->peca.Y == Y){
+        return(FALSE);
+    }else{
+        return(TRUE);
+    }
 }
 
-int validacaopecacontra(){ //valida se ele não está tentando comer uma peca
-
+int validacaopecacontra(struct node **headcontra, int X, int Y){ //valida se ele não está tentando comer uma peca
+    struct node *n = *headcontra
+    while(n != NULL && (n->peca.X != X || n->peca.Y != Y)){
+        n = n->next;
+    }
+    if(n->peca.X == X && n->peca.Y == Y){
+        return(FALSE);
+    }else{
+        return(TRUE);
+    }
 }
 
-int validacaopecalonge(){ //valida se não está tentando mover uma peca para muito longe
-
+int validacaopecalonge(int X, int Y, int Xdest, int Ydest){ //valida se não está tentando mover uma peca para muito longe
+    if((Xdest == X-1 && Xdest == X+1) && (Ydest == Y+1 && Ydest == Y-1)){
+        return(TRUE);
+    }else{
+        return(FALSE);
+    }
 }
