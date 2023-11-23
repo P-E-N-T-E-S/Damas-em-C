@@ -18,8 +18,8 @@ Bem-vindo ao jogo de Damas em C! Este projeto é uma recriação do clássico jo
 
 ## 🧐 Como executar
 - Clone o repositório: git clone https://github.com/P-E-N-T-E-S/Damas-em-C.git
-- Compile o código: 
-- Execute o jogo: 
+- Compile o código: gcc *.c header.h -o damas.out
+- Execute o jogo: ./damas.out
 - Siga as instruções no terminal para fazer seus movimentos no jogo.
 
 
