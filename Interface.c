@@ -3,9 +3,32 @@
 #include <string.h>
 
 #include "header.h"
+
 #define TRUE 1
 #define FALSE 0
 
+struct peca{
+  char time;
+  int Y;
+  int X;
+  struct peca *next;
+};
+
+struct jogadas{
+  struct peca posicaoAnterior;
+  struct peca posicaoNova;
+  struct peca pecaComida;
+  struct jogadas *next;
+};
+
+struct partida{
+  char jogadorPecasPretas[50];
+  char jogadorPecasBrancas[50];
+  int fimDeJogo;
+  char vencedor;
+  struct jogadas *historicoJogadas;
+  struct partida *next;
+};
 
 int Menu() 
 {
@@ -86,10 +109,10 @@ struct peca *InputEscolhaJogada()
   struct peca *tentativaDeJogada;
   puts("insira a posição da peça que deseja mover:");
   printf("X: ");
-  scanf("%d", tentativaDeJogada->X);
+  scanf("%d", &(tentativaDeJogada->X));
   while ((getchar()) != '\n');
   printf("Y: ");
-  scanf("%d", tentativaDeJogada->Y);
+  scanf("%d", &(tentativaDeJogada->Y));
   while ((getchar()) != '\n');
 
   return tentativaDeJogada;
@@ -100,10 +123,10 @@ struct peca InputEscolhaNovaPosJogada()
   struct peca NovaPos;
   puts("insira a nova posição em que você deseja mover essa peça:");
   printf("X: ");
-  scanf("%d", NovaPos.X);
+  scanf("%d", &(NovaPos.X));
   while ((getchar()) != '\n');
   printf("Y: ");
-  scanf("%d", NovaPos.Y);
+  scanf("%d", &(NovaPos.Y));
   while ((getchar()) != '\n');
 
   return NovaPos;

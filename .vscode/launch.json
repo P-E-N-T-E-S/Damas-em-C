@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/luize/Documents/Programação/PIF/Damas/DAMAS_EM_C",
-      "program": "c:/Users/luize/Documents/Programação/PIF/Damas/DAMAS_EM_C/build/Debug/outDebug",
+      "cwd": "c:/Users/luize/Documents/Programação/PIF/Nova pasta/DAMAS_EM_C",
+      "program": "c:/Users/luize/Documents/Programação/PIF/Nova pasta/DAMAS_EM_C/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
